@@ -1,0 +1,131 @@
+/* StatDesk Indonesia — gaya situs. Satu berkas, tanpa font atau aset luar:
+   semua yang tampil berasal dari berkas app/ sendiri. */
+:root {
+  --ink: #1d2b2a;
+  --muted: #5c6b69;
+  --paper: #f7f5ef;
+  --card: #ffffff;
+  --teal: #0f4c4a;
+  --teal-deep: #0a3533;
+  --amber: #e8a317;
+  --amber-soft: #fdf3d7;
+  --line: #dfe3dd;
+  --good: #1e7d4f;
+  --bad: #b3372e;
+  --radius: 12px;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.55;
+}
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+a { color: var(--teal); }
+a:hover { color: var(--teal-deep); }
+
+/* Bilah atas */
+.topbar { background: var(--teal-deep); color: #fff; position: sticky; top: 0; z-index: 10; }
+.topbar-inner { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; }
+.brand { color: #fff; text-decoration: none; font-size: 20px; letter-spacing: .2px; white-space: nowrap; }
+.brand b { color: var(--amber); font-weight: 700; }
+.brand-mark { color: var(--amber); margin-right: 6px; }
+.mainnav { display: flex; gap: 4px; flex-wrap: wrap; margin-left: auto; }
+.mainnav a {
+  color: #d7e6e2; text-decoration: none; padding: 6px 10px; border-radius: 8px;
+  font-size: 14.5px;
+}
+.mainnav a:hover { background: rgba(255,255,255,.12); color: #fff; }
+.mainnav a.active { background: var(--amber); color: #231a00; font-weight: 700; }
+
+/* Judul halaman */
+.page-head { margin: 28px 0 8px; }
+.page-head h1 { font-size: 30px; line-height: 1.15; margin: 0 0 6px; color: var(--teal-deep); }
+.page-head p { margin: 0; color: var(--muted); max-width: 72ch; }
+.rule { height: 4px; background: linear-gradient(90deg, var(--amber) 0 120px, var(--teal) 120px); border-radius: 2px; margin: 14px 0 20px; }
+
+/* Kartu KPI */
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 18px 0; }
+.kpi {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 16px 16px 12px;
+}
+.kpi .label { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.kpi .value { font-size: 30px; font-weight: 800; color: var(--teal-deep); line-height: 1.15; margin: 4px 0 2px; }
+.kpi .unit { font-size: 14px; font-weight: 600; color: var(--muted); }
+.kpi .delta { font-size: 13.5px; }
+.delta.up { color: var(--good); }
+.delta.down { color: var(--bad); }
+.kpi .src { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+/* Panel dan grid */
+.panel {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px 20px; margin: 16px 0;
+}
+.panel h2 { margin: 0 0 4px; font-size: 20px; color: var(--teal-deep); }
+.panel h3 { margin: 0 0 8px; font-size: 16.5px; color: var(--teal-deep); }
+.panel .sub { color: var(--muted); font-size: 14px; margin: 0 0 10px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-2 > .panel { margin: 0; }
+
+/* Kontrol */
+.controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 12px 0; }
+.controls label { font-size: 14px; font-weight: 600; color: var(--muted); }
+select, input[type="search"], button {
+  font: inherit; font-size: 14.5px; padding: 8px 10px; border-radius: 8px;
+  border: 1px solid #b9c4bf; background: #fff; color: var(--ink);
+}
+button { cursor: pointer; background: var(--teal); color: #fff; border-color: var(--teal); font-weight: 600; }
+button:hover { background: var(--teal-deep); }
+button.ghost { background: #fff; color: var(--teal); border-color: var(--teal); }
+button.ghost[aria-pressed="true"] { background: var(--amber-soft); border-color: var(--amber); color: #6b4d00; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs button { background: #fff; color: var(--teal); border-color: var(--teal); }
+.tabs button[aria-pressed="true"] { background: var(--teal); color: #fff; }
+
+/* Tabel */
+table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+th, td { padding: 9px 10px; text-align: left; border-bottom: 1px solid var(--line); }
+th { background: var(--teal-deep); color: #fff; font-size: 13.5px; }
+th button.sort { background: none; border: 0; color: #fff; padding: 0; font-size: 13.5px; font-weight: 700; text-align: left; }
+th button.sort:hover { text-decoration: underline; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+tr:nth-child(even) td { background: #f4f6f3; }
+.table-scroll { overflow-x: auto; }
+.note { font-size: 13px; color: var(--muted); }
+.src-line { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 10px; margin-top: 14px; }
+
+/* Grafik */
+.chart { width: 100%; height: auto; display: block; }
+.chart-title { font-size: 14px; font-weight: 700; color: var(--teal-deep); margin: 0 0 4px; }
+.legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--muted); margin-top: 6px; }
+.legend .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+
+/* Daftar dan sorotan */
+.highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.highlight { background: var(--amber-soft); border: 1px solid #ecd27a; border-radius: var(--radius); padding: 14px 16px; }
+.highlight b { display: block; font-size: 20px; color: var(--teal-deep); }
+.highlight span { font-size: 14px; color: var(--muted); }
+ul.tight { margin: 6px 0; padding-left: 20px; }
+ul.tight li { margin: 4px 0; }
+
+/* Kaki */
+.footer { border-top: 3px solid var(--teal); margin-top: 36px; padding: 20px 0 28px; color: var(--muted); font-size: 14px; }
+.footer .fine { font-size: 13px; }
+
+@media (max-width: 860px) {
+  .kpis { grid-template-columns: repeat(2, 1fr); }
+  .grid-2, .highlights { grid-template-columns: 1fr; }
+  .page-head h1 { font-size: 25px; }
+  .topbar-inner { gap: 8px; }
+  .mainnav { margin-left: 0; }
+}
+@media (max-width: 480px) {
+  .kpis { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .kpi .value { font-size: 24px; }
+  .wrap { padding: 0 14px; }
+}
